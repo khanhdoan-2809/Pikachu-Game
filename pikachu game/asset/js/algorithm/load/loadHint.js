@@ -8,10 +8,6 @@ function loadHint() {
     let numberOfHint = 9
     let hint = document.querySelector("#hint__bulb")
     hint.addEventListener("click", function () {
-        // if (numberOfHint === 0) {
-        //     return
-        // }
-
         if (!hint.hasAttribute('data-prevent-double-click')) {
             document.querySelector("#hint__bulb").disabled = true
             document.querySelector("#hint__bulb").setAttribute('data-prevent-double-click', true);

@@ -133,19 +133,6 @@ function loadMatrixLevel() {
                                         (item) => (item.x.toString() + "" + item.y.toString()) != blockDestination.x.toString() + "" + blockDestination.y.toString())
                                     objLabelHint[blockDeparture.label] = arrTempLabelHint
                                     removeRedBorder()
-
-
-                                // if (totalBlock === 0) {
-                                //     alert("win")
-                                //     // let url = new URL(location.href);
-                                //     // let level = url.searchParams.get("level");
-                                //     let level = localStorage.getItem("level")
-                                //     if (level != 6) {
-                                //         level = parseInt(level) + 1
-                                //         location.href = `play.html`;
-                                //         localStorage.setItem("level", level+1)
-                                //     }
-                                // }
                             }
                             else {
                                 let gameSound = document.querySelector("#audioGame")

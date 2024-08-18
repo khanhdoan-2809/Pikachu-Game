@@ -6,16 +6,16 @@ function getMinMaxByX(blockDeparture, blockDestination) {
     let yOfXMax
 
     if (blockDeparture.x <= blockDestination.x) {
-        xMin=blockDeparture.x
+        xMin = blockDeparture.x
         yOfXMin = blockDeparture.y
         xMax = blockDestination.x
-        yOfXMax=blockDestination.y
+        yOfXMax = blockDestination.y
     }
     else {
-        xMax=blockDeparture.x
+        xMax = blockDeparture.x
         yOfXMax = blockDeparture.y
         xMin = blockDestination.x
-        yOfXMin=blockDestination.y
+        yOfXMin = blockDestination.y
     }
 
     return {xMin, xMax, yOfXMin, yOfXMax}

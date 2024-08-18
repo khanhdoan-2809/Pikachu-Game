@@ -1,6 +1,7 @@
-let songs = ["/asset/audio/Plastic%20Love.mp3",
-"/asset/audio/Ocean%20Eyes.mp3",
-"/asset/audio/No%20Time%20To%20Die.mp3",
+let songs = [
+    "/asset/audio/Plastic%20Love.mp3",
+    "/asset/audio/Ocean%20Eyes.mp3",
+    "/asset/audio/No%20Time%20To%20Die.mp3",
 ]
 
 window.addEventListener('load', function () {
