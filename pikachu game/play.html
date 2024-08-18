@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19130097-Đoàn Trần Phi Khánh</title>
+    <link rel="icon" type="image/x-icon" href="asset/img/background/favicon.png">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <!--css-->
+    <link rel="stylesheet" href="asset/css/base.css">
+    <link rel="stylesheet" href="asset/css/play.css">
+</head>
+
+<body>
+<div class="contain__ball">
+    <div class="contain__ball-up"></div>
+    <div class="contain__ball-down"></div>
+</div>
+
+<div class="contain__game-over">
+    <h1 >game over</h1>
+    <div class="img__game-over">
+        <img src="asset/img/background/gameover.gif">
+    </div>
+    <div class="button__game-over">
+        <button id="playAgain">play again</button>
+    </div>
+</div>
+<div class="contain__board-score">
+    <div class="contain__board">
+        <h1 class="board-level">level 1</h1>
+        <div class="img__board-score">
+            <img src="asset/img/background/next.gif">
+        </div>
+        <h1>use hint: <span id="board-hint">0</span></h1>
+        <h1>time: <span id="board-time" style="text-transform: lowercase">0</span></h1>
+        <h1>score: <span id="board-score">0</span></h1>
+        <div  id="nextLevel" class="button__next-level">
+            <button>next level</button>
+        </div>
+    </div>
+</div>
+<main class="main">
+    <audio id="audioGame" preload="audio" src="/asset/audio/Wrong.mp3"></audio>
+    <div class="contain" id="contain__background">
+        <div class="contain__bar">
+            <div class="bar__hint">
+                <div class="item">
+                    <span id="level">Level 1</span>
+                </div>
+                <div class="item">
+                    Score: <span id="item__score">0</span>
+                </div>
+                <div class="item" id="changeImage">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+                <div class="item" id="hint">
+                    <i id="hint__bulb" class="fa-solid fa-lightbulb"></i>
+                    <span id="numberOfHint">9</span>
+                </div>
+            </div>
+            <div class="bar__time">
+                <div class="time__frame">
+                    <div class="time__value"></div>
+                </div>
+            </div>
+            <div class="bar__option">
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="contain__matrix">
+            <div class="matrix">
+            </div>
+        </div>
+
+        <div class="contain__manage">
+            <!--            <div class="manage__close">X</div>-->
+            <div class="manage__item" onclick="window.location.href='home.html'">home</div>
+            <div class="manage__item" id="manage__resume">resume</div>
+            <div class="manage__item" id="manage__restart">restart</div>
+            <div class="manage__item" id="manage__sound">sound</div>
+            <div class="manage__item" id="manage__exit">exit</div>
+            <div class="gif" style="padding-right: 40px">
+                <img src="/asset/img/background/gif3.gif" alt="" width="120px" height="120px">
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<div class="contain__bar-sound">
+    <div class="contain__bar-close" id="closeBar">X</div>
+    <div class="bar__title">Base sound</div>
+    <div class="bar_a">
+        <span class="volume" id="volumeBase"><i class="fas fa-volume-up"></i></span>
+        <div class="bar" id="barBaseSound">
+            <div class="bar__valid" id="baseSound" data-volume="volumeBase">
+                <div class="bar__button"></div>
+            </div>
+        </div>
+    </div>
+    <div class="bar__title">Game sound</div>
+    <div class="bar_a">
+        <span class="volume" id="volumeGame"><i class="fas fa-volume-up"></i></span>
+        <div class="bar" id="barGameSound">
+            <div class="bar__valid" id="gameSound" data-volume="volumeGame">
+                <div class="bar__button"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+    <!--js-->
+    <script src="asset/js/song.js"></script>
+    <script type="module" src="asset/js/sound.js"></script>
+<!--    <script src="asset/js/time-bar.js"></script>-->
+    <script src="asset/js/algorithm/algorithm/minMax.js"></script>
+    <script type="module" src="asset/js/algorithm/base.js"></script>
+
+    <script>
+        document.querySelector("#playAgain").addEventListener("click",()=>{
+            window.location.href="play.html"
+        })
+    </script>
+
+<script>
+    let i = 0
+    document.querySelector(".main").style.visibility = "hidden"
+    setTimeout(()=>{
+        let interval = setInterval(()=>{
+            i+=10
+            if (i == 360) {
+                clearInterval(interval)
+                // setTimeout(()=>{
+                //     document.querySelector(".contain__ball").style.background = "none"
+                //     document.querySelector(".contain__ball-up").style.top = `-100%`
+                //     document.querySelector(".contain__ball-down").style.bottom = `-100%`
+                //     document.querySelector(".contain__ball--background").style.bottom = `-100%`
+                //     document.querySelector(".contain__ball").style.bottom = `0`
+                // }, 500)
+                let promise = new Promise(function(resolve){
+                    let timeout = setTimeout(()=>{
+                        document.querySelector(".contain__ball").style.background = "none"
+                        document.querySelector(".contain__ball-up").style.top = `-100%`
+                        document.querySelector(".contain__ball-down").style.bottom = `-100%`
+                        // document.querySelector(".contain__ball--background").style.bottom = `-100%`
+                        document.querySelector(".contain__ball").style.bottom = `0`
+                        resolve(timeout)
+                    }, 500)
+                })
+                promise.then(function(timeout) {
+                    clearTimeout(timeout)
+                    document.querySelector(".main").style.visibility = "visible"
+                }).then(function() {
+                    return new Promise(function(resolve, reject){
+                        setTimeout(resolve, 1500)
+                    })
+                }).then(function(){
+                    document.querySelector(".contain__ball").style.display = "none"
+                })
+            }
+            document.querySelector(".contain__ball").style.transform = `rotate(${i}deg)`
+            document.querySelector("body").style.overflow = "hidden"
+        }, 10)
+    }, 1000)
+</script>
+
+</body>
+</html>

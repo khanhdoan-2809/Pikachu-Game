@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19130097-Đoàn Trần Phi Khánh</title>
+    <link rel="icon" type="image/x-icon" href="asset/img/background/favicon.png">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <!--font awesome-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--css-->
+    <link rel="stylesheet" href="asset/css/home.css">
+
+</head>
+<body>
+<div class="contain__ball">
+    <div class="contain__ball-up"></div>
+    <div class="contain__ball-down"></div>
+</div>
+
+
+
+    <div class="contain">
+        <div class="contain__option">
+            <audio id="audioBase" autoplay preload="audio" src="/asset/audio/FairyTail.mp3"></audio>
+            <audio id="audioGame" preload="audio" src="/asset/audio/Wrong.mp3"></audio>
+
+            <button id="start" class="option">start</button>
+            <button class="option" id="level">level
+            </button>
+            <button class="option" id="guide">guide</button>
+            <button class="option" id="sound">setting</button>
+            <button class="option" id="exit">exit</button>
+        </div>
+
+        <div class="contain__level">
+            <div class="level" id="level1" data-level="1"><a>level 1</a></div>
+            <div class="level" id="level2" data-level="2"><a>level 2</a></div>
+            <div class="level" id="level3" data-level="3"><a>level 3</a></div>
+            <div class="level" id="level4" data-level="4"><a>level 4</a></div>
+            <div class="level" id="level5" data-level="5"><a>level 5</a></div>
+            <div class="level" id="level6" data-level="6"><a>level 6</a></div>
+        </div>
+
+        <div class="contain__guide">
+            <div class="guide">
+                <p>Route U</p>
+                <img src="asset/img/guide/guide1.png">
+            </div>
+            <div class="guide">
+                <p>Route L</p>
+                <img src="asset/img/guide/guide3.png">
+            </div>
+            <div class="guide">
+                <p>Route Z</p>
+                <img src="asset/img/guide/guide5.png">
+            </div>
+            <div class="guide">
+                <p>Route I</p>
+                <img src="asset/img/guide/guide6.png">
+            </div>
+        </div>
+
+        <div class="contain__bar-sound">
+            <div class="bar__title">Base sound
+            </div>
+            <div class="bar_a">
+                <span class="volume" id="volumeBase"><i class="fas fa-volume-up"></i></span>
+                <div class="bar" id="barBaseSound">
+                    <div class="bar__valid" id="baseSound" data-volume="volumeBase">
+                        <div class="bar__button"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bar__title">Game sound</div>
+            <div class="bar_a">
+                <span class="volume" id="volumeGame"><i class="fas fa-volume-up"></i></span>
+                <div class="bar" id="barGameSound">
+                    <div class="bar__valid" id="gameSound" data-volume="volumeGame">
+                        <div class="bar__button"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--js-->
+    <script type="module" src="asset/js/sound.js"></script>
+    <script src="asset/js/option.js"></script>
+    <script>
+        document.querySelector("#start").addEventListener("click", (e)=>{
+            e.preventDefault()
+            localStorage.setItem("level", 1)
+            window.location.href=`play.html`
+        })
+        let arrLevel = document.querySelectorAll(".level")
+        arrLevel.forEach(function(currentLevel){
+            currentLevel.addEventListener("click", function(){
+                localStorage.setItem("level", this.dataset.level)
+                window.location.href=`play.html`
+            })
+        })
+    </script>
+    <script>localStorage.removeItem("level")</script>
+
+
+    <script>
+        let i = 0
+        document.querySelector(".contain").style.visibility = "hidden"
+        setTimeout(()=>{
+            let interval = setInterval(()=>{
+                i+=10
+                if (i == 360) {
+                    clearInterval(interval)
+                    let promise = new Promise(function(resolve){
+                        let timeout = setTimeout(()=>{
+                            document.querySelector(".contain__ball").style.background = "none"
+                            document.querySelector(".contain__ball-up").style.top = `-100%`
+                            document.querySelector(".contain__ball-down").style.bottom = `-100%`
+                            // document.querySelector(".contain__ball--background").style.bottom = `-100%`
+                            document.querySelector(".contain__ball").style.bottom = `0`
+                            resolve(timeout)
+                        }, 500)
+                    })
+                    promise.then(function(timeout) {
+                        clearTimeout(timeout)
+                        document.querySelector(".contain").style.visibility = "visible"
+                    }).then(function() {
+                        return new Promise(function(resolve, reject){
+                            setTimeout(resolve, 1500)
+                        })
+                    }).then(function(){
+                        document.querySelector(".contain__ball").style.display = "none"
+                    })
+                }
+                document.querySelector(".contain__ball").style.transform = `rotate(${i}deg)`
+                document.querySelector("body").style.overflow = "hidden"
+            }, 10)
+        }, 1000)
+    </script>
+
+</body>
+
+</html>

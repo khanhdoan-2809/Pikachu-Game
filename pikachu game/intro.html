@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19130097-Đoàn Trần Phi Khánh</title>
+    <link rel="icon" type="image/x-icon" href="asset/img/background/favicon.png">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <!--css-->
+    <link rel="stylesheet" href="asset/css/intro.css">
+
+</head>
+<body>
+
+
+
+
+
+<video autoplay muted loop class="videoBackground">
+    <source src="/asset/img/background/video1-background.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+
+
+
+<div class="contain">
+    <audio id="audioBase" loop>
+        <source src="/asset/audio/GameOfThrones.mp3">
+    </audio>
+        <div class="contain__title">
+            <h1 class="title">
+                <span class="P">P</span>
+                <span class="O1">O</span>
+                <span class="K">K</span>
+                <span class="E1">E</span>
+                <span class="M1">M</span>
+                <span class="O2">O</span>
+                <span class="N">N</span>
+                <span class="N"> </span>
+                <span class="G">G</span>
+                <span class="A">A</span>
+                <span class="M2">M</span>
+                <span class="E2">E</span>
+                <div id="mute">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                </div>
+            </h1>
+
+            <div class="load">
+                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+        <div class="contain__enter">
+            <button>Enter Game</button>
+        </div>
+    </div>
+    <script>
+        localStorage.clear()
+    </script>
+    <script>
+        document.querySelector(".contain__enter").addEventListener("click", ()=>{
+            document.querySelector(".load").style.display="block"
+            document.body.style.backgroundColor = "black";
+            document.querySelector(".videoBackground").style.opacity = "0.4";
+            document.querySelector(".title").style.opacity = "0.4";
+            document.querySelector(".contain__enter").style.opacity = "0.4";
+            document.querySelector(".contain__enter").disable=true
+            setTimeout(()=>{
+                window.location.href="home.html"
+            }, 1500)
+        })
+    </script>
+        <script>
+            let isClickedMute=false
+            document.querySelector("#mute").addEventListener("click", ()=>{
+                if(isClickedMute) {
+                    document.querySelector("#mute i").className="fa-solid fa-volume-xmark"
+                    document.querySelector("#audioBase").pause();
+                    isClickedMute=false
+                }else {
+                    document.querySelector("#mute i").className="fas fa-volume-up"
+                    document.querySelector("#audioBase").play();
+                    isClickedMute=true
+                }
+            })
+        </script>
+    <script>localStorage.clear()</script>
+
+
+</body>
+</html>

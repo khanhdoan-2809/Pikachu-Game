@@ -1,0 +1,46 @@
+$aqua__bold-color: #006699;
+$aqua__light-color: #2eaae8;
+$brown-color:#5b4f41;
+$brown__light-color: #b4a987;
+$brown__bold-color: #575247;
+$black-color: #1c1c1c;
+$black__light-color: #04046e;
+$blue-color: #212131;
+$coffee__color: #5d3802;
+$white-color:  #e2e6e9;
+$white__green-color: #58e5a1;
+$white__primary-color: #414040;
+$midnight-blue__color: #000066;
+$grey-color: #6c6666;
+$grey__light-color: #374348;
+$yellow-color: rgba(239, 227, 3, 0.85);
+$skin-color: #eee7ba;
+$red-color: red;
+$red__light-color: #be5109;
+
+$font__size-icon: 14px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  width: 100%;
+  height: 100%;
+}
+
+.contain {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: $white-color;
+  text-decoration: none !important;
+}
+
+i {
+  cursor: pointer;
+}
