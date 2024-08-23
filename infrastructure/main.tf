@@ -11,7 +11,6 @@ module "eb" {
 
 module "s3" {
     source           = "./modules/s3"
-    mv_bucket_name   = var.lv_bucket_name
     mv_bucket_prefix = var.lv_bucket_prefix
     mv_key_file      = var.lv_key_file
     mv_source_file   = var.lv_source_file
