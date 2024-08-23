@@ -1,3 +1,8 @@
+variable "mv_bucket_name" {
+    type = string
+}
+
+
 variable "mv_bucket_prefix" {
     type = string
 }

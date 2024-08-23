@@ -16,6 +16,10 @@ variable "lv_platform" {
 }
 
 // s3
+variable "lv_bucket_name" {
+    type = string
+}
+
 variable "lv_bucket_prefix" {
     type = string
 }

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "pikachu" {
-  bucket = "${var.mv_bucket_prefix}-${random_pet.petname.id}}"
+  bucket = "${var.mv_bucket_prefix}-${var.mv_bucket_name}}}"
 }
 
 resource "aws_s3_object" "pikachu" {
