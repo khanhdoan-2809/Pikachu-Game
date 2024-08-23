@@ -7,18 +7,6 @@ variable "lv_eb_app_version_name" {
     type = string
 }
 
-variable "lv_application" {
-    type = string
-}
-
-variable "lv_bucket" {
-    type = string
-}
-
-variable "lv_object_key" {
-  
-}
-
 variable "lv_eb_env_name" {
     type = string
 }
@@ -29,10 +17,6 @@ variable "lv_platform" {
 
 // s3
 variable "lv_bucket_prefix" {
-    type = string
-}
-
-variable "lv_bucket_name" {
     type = string
 }
 

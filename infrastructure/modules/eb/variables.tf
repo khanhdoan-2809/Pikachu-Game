@@ -6,10 +6,6 @@ variable "mv_eb_app_version_name" {
     type = string
 }
 
-variable "mv_application" {
-    type = string
-}
-
 variable "mv_bucket" {
     type = string
 }
@@ -24,4 +20,8 @@ variable "mv_eb_env_name" {
 
 variable "mv_platform" {
     type = string
+}
+
+variable "mv_instance_profile" {
+    type = string  
 }

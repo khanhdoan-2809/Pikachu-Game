@@ -20,6 +20,6 @@ resource "aws_elastic_beanstalk_environment" "env-2048" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
-    value     = aws_iam_instance_profile.beanstalk_iam_instance_profile.arn
+    value     = var.mv_instance_profile
   }
 }
